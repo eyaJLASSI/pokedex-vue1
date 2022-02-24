@@ -5,19 +5,17 @@ app.component('pokemon-list', {
   /*html*/
   `<div class="pokemon-display">
     <div class="pokemon-container">
-      <div class="product-info">
+      <div class="pokemon-info">
         <h1>Pokedex</h1>
         <input v-model="message" placeholder="Entrez votre recherche">
         <button
         class="button"
-        :class="{ disabledButton: message == '' }" 
-        :disabled="message == ''"
         v-on:click="search(this.message)" 
         >
-          Rechercher
+          Search
         </button>
         <div style="display: flex; flex-wrap: wrap;">
-          <pokemon-thuile v-for="item in pokemonList" :name="item.name" :pokemonLink="item.url"></pokemon-thuile>
+          <pokemon-list-item v-for="item in pokemonList" :name="item.name" :pokemonLink="item.url"></pokemon-list-item>
         </div>
         <button 
           class="button" 
@@ -82,17 +80,20 @@ app.component('pokemon-list', {
         this.nextLink     = null
       })
     },
-  },
-  computed: {
-      
-  },
-  mounted () {
-    axios
+    resetList() {
+      axios
       .get('https://pokeapi.co/api/v2/pokemon')
       .then(response => {
         this.pokemonList  = response.data.results
         this.previousLink = response.data.previous
         this.nextLink     = response.data.next
       })
+    }
+  },
+  computed: {
+      
+  },
+  mounted () {
+    this.resetList()
 }
 })

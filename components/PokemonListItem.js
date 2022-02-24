@@ -1,11 +1,11 @@
-app.component('pokemon-details', {
-    props: ["url"], 
+app.component('pokemon-list-item', {
+    props: ["name", "pokemonLink"], 
     template: 
     /*html*/
-    `<div style="margin: 5px;">
-      <p>{{ pokemonName }}</p>
-      <p>{{ id }}</p>
-      <img :src="imgLink" style="width: 120px;">
+    `<div class="PokemonItem">
+      <p class="PokemonItemText">{{ pokemonName }}</p>
+      <p class="PokemonItemText">{{ id }}</p>
+      <img :src="imgLink" style="width: 80px;">
     </div>`,
     data() {
       return {
