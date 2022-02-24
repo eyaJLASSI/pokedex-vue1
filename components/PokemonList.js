@@ -57,6 +57,14 @@ app.component('pokemon-list', {
           this.previousLink = response.data.previous
           this.nextLink     = response.data.next
         })
+    },
+    search(searchTerm) {
+      axios
+      .get("https://pokeapi.co/api/v2/pokemon?limit=1126")
+      .then(response => {
+        var searchResult = response.data.results.filter((x) => x.name.includes(searchTerm)) ;
+        console.log(searchResult); 
+      })
     }
   },
   computed: {
