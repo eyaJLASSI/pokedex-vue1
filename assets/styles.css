@@ -96,13 +96,13 @@ p {
   font-size: 22px;
 }
 
-.product-display {
+.pokemon-display {
   display: flex;
   flex-direction: column;
   padding: 1rem;
 }
 
-.product-container {
+.pokemon-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
